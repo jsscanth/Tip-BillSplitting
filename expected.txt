@@ -1,0 +1,17 @@
+Subtotal            : $85.50
+Tip(15%)            : $12.82
+Total               : $98.33
+People              : 4
+Each person pays    : $24.58
+
+Subtotal            : $100.00
+Tip(10%)            : $10.00
+Total               : $110.00
+People              : 5
+Each person pays    : $22.00
+
+Subtotal            : $76.52
+Tip(11%)            : $8.42
+Total               : $84.94
+People              : 3
+Each person pays    : $28.31
