@@ -6,9 +6,41 @@ total_bill = 0.00
 total_bill_person = 0.00 # Total bill per person
 
 def main ():
-    bill_amount = float(input("Subtotal: "))
-    tip_percentage = float(input("Tip percentage: ").strip("%"))
-    number_of_people = int(input("Number of people: "))
+    while True:
+        try:
+            bill_amount = float(input("Subtotal: "))
+            
+            if bill_amount <= 0:
+                print("Input the proper amount of bill")
+                continue
+            else:
+                break
+        except ValueError:
+            print("Input the proper amount of bill.")
+            
+    while True:
+        try:
+            tip_percentage = float(input("Tip percentage: ").strip("%"))
+            
+            if tip_percentage < 0:
+                print("Input the proper amount of tip")
+                continue
+            else:
+                break
+        except ValueError:
+            print("Input the proper amount of tip.")
+
+    while True:
+        try:
+            number_of_people = int(input("Number of people: "))
+            
+            if number_of_people <= 0:
+                print("Input the proper amount of people")
+                continue
+            else:
+                break
+        except ValueError:
+            print("Input the proper amount of people.")    
     
     total_tip = calculate_tip(bill_amount, tip_percentage)
     total_bill = calculate_bill(bill_amount, total_tip)    
@@ -16,11 +48,15 @@ def main ():
     
     print("---------BILL SUMMARY---------")
     print(f"{'Subtotal':<20}: ${bill_amount:,.2f}")
-    print(f"{f'Tip({tip_percentage:.0f}%)':<20}: %{total_tip:,.2f}")
+    print(f"{f'Tip({tip_percentage:.0f}%)':<20}: {total_tip:,.2f}%")
     print(f"{'Total':<20}: ${total_bill:,.2f}")
     print(f"{'People':<20}: {number_of_people}")
     print(f"{'Each person pays':<20}: ${total_bill_person:,.2f}")
     print("------------------------------")
+
+def get_positive(number):
+     pass
+         
     
 #Calculate the tip based on tip percentage on amount
 def calculate_tip(amount, tip):
