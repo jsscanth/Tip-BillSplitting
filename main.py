@@ -53,21 +53,21 @@ def main ():
 def calculate_tip(amount, tip):
     total = amount * (tip/100)
     total = Decimal(str(total))
-    total = total.quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+    total = total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
     return float(total)
 
 # Calculate the bill after adding the tip
 def calculate_bill(amount, tip):
     total_bill = amount + tip
     total_bill = Decimal(str(total_bill))
-    total_bill = total_bill.quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+    total_bill = total_bill.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
     return float(total_bill)
     
 # Divide the bill per people
 def split_bill(bill, people):
     total_bill = bill / people
     total_bill = Decimal(str(total_bill))
-    total_bill = total_bill.quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+    total_bill = total_bill.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
     return float(total_bill)
 
 if __name__ == "__main__":
