@@ -1,9 +1,4 @@
-bill_amount = 0.00 
-tip_percentage = 0.00
-number_of_people = 0
-total_tip = 0.00
-total_bill = 0.00
-total_bill_person = 0.00 # Total bill per person
+from decimal import Decimal, ROUND_HALF_UP
 
 def main ():
     while True:
@@ -48,29 +43,32 @@ def main ():
     
     print("---------BILL SUMMARY---------")
     print(f"{'Subtotal':<20}: ${bill_amount:,.2f}")
-    print(f"{f'Tip({tip_percentage:.0f}%)':<20}: {total_tip:,.2f}%")
+    print(f"{f'Tip({tip_percentage:.0f})%':<20}: ${total_tip:,.2f}")
     print(f"{'Total':<20}: ${total_bill:,.2f}")
     print(f"{'People':<20}: {number_of_people}")
     print(f"{'Each person pays':<20}: ${total_bill_person:,.2f}")
     print("------------------------------")
-
-def get_positive(number):
-     pass
          
-    
 #Calculate the tip based on tip percentage on amount
 def calculate_tip(amount, tip):
     total = amount * (tip/100)
-    return total
+    total = Decimal(str(total))
+    total = total.quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+    return float(total)
 
 # Calculate the bill after adding the tip
 def calculate_bill(amount, tip):
     total_bill = amount + tip
-    return total_bill
+    total_bill = Decimal(str(total_bill))
+    total_bill = total_bill.quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+    return float(total_bill)
     
 # Divide the bill per people
 def split_bill(bill, people):
     total_bill = bill / people
-    return total_bill
-    
-main()
+    total_bill = Decimal(str(total_bill))
+    total_bill = total_bill.quantize(Decimal("0.1"), rounding=ROUND_HALF_UP)
+    return float(total_bill)
+
+if __name__ == "__main__":
+    main()
